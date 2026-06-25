@@ -1,0 +1,13 @@
+numpy>=2.1
+pandas>=2.2
+scikit-learn>=1.6
+openpyxl>=3.1
+matplotlib>=3.10
+seaborn>=0.13
+torch>=2.0
+xgboost>=2.0
+optuna>=3.0
+
+# Install one TabPFN implementation for full reproduction.
+# The original notebook used tabpfn_client.TabPFNRegressor.
+tabpfn-client

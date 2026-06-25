@@ -1,0 +1,77 @@
+{\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.10\textwidth} >{\raggedright\arraybackslash}p{0.09\textwidth} >{\centering\arraybackslash}p{0.17\textwidth} >{\centering\arraybackslash}p{0.18\textwidth} >{\centering\arraybackslash}p{0.16\textwidth} >{\centering\arraybackslash}p{0.16\textwidth}}
+    \caption{Predictive performance of XGBoost, TabPFN, and CIGAR
+    under 5-fold cross-validation on Dataset~2
+    (\texttt{sklearn.KFold}, \texttt{shuffle=True},
+    \texttt{random\_state=42}). Each entry reports
+    mean~$\pm$~standard deviation across the five test folds. For
+    each target, the best value per metric is shown in bold. Lower
+    is better for MAE, MSE, and MAPE; higher is better for $R^2$.}
+    \label{tab:model_comparison} \\
+
+    \toprule
+    \textbf{Target} & \textbf{Model} & \textbf{MAE} & \textbf{MSE} & \textbf{MAPE} & \textbf{$R^2$} \\
+    \midrule
+    \endfirsthead
+
+    \multicolumn{6}{c}%
+    {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+    \toprule
+    \textbf{Target} & \textbf{Model} & \textbf{MAE} & \textbf{MSE} & \textbf{MAPE} & \textbf{$R^2$} \\
+    \midrule
+    \endhead
+
+    \midrule
+    \multicolumn{6}{r}{{Continued on next page...}} \\
+    \endfoot
+
+    \bottomrule
+    \endlastfoot
+
+    % --- Data Section ---
+    \textbf{CO}
+    & XGBoost & $\mathbf{0.7323 \pm 0.0371}$ & $\mathbf{0.9398 \pm 0.1131}$ & $\mathbf{0.0521 \pm 0.0028}$ & $\mathbf{0.6104 \pm 0.0699}$ \\
+    & TabPFN  & $0.8849 \pm 0.0632$         & $1.3141 \pm 0.2541$         & $0.0614 \pm 0.0036$         & $0.4701 \pm 0.0334$ \\
+    & CIGAR   & $0.7725 \pm 0.0568$         & $1.0485 \pm 0.1465$         & $0.0544 \pm 0.0036$         & $0.5667 \pm 0.0838$ \\
+    \midrule
+    \textbf{HCN}
+    & XGBoost & $9.5262 \pm 0.6497$           & $154.4555 \pm 28.5683$          & $0.0938 \pm 0.0022$         & $0.6859 \pm 0.0610$ \\
+    & TabPFN  & $10.8636 \pm 0.9053$          & $208.3615 \pm 44.6461$          & $0.1084 \pm 0.0096$         & $0.5782 \pm 0.0819$ \\
+    & CIGAR   & $\mathbf{7.6370 \pm 0.5232}$  & $\mathbf{109.1994 \pm 22.0244}$ & $\mathbf{0.0724 \pm 0.0038}$ & $\mathbf{0.7792 \pm 0.0400}$ \\
+    \midrule
+    \textbf{Phenol}
+    & XGBoost & $3.2187 \pm 0.2550$          & $16.6740 \pm 2.3144$          & $0.1169 \pm 0.0071$         & $0.7208 \pm 0.0532$ \\
+    & TabPFN  & $3.4339 \pm 0.4586$          & $18.6088 \pm 4.3331$          & $0.1267 \pm 0.0180$         & $0.6908 \pm 0.0730$ \\
+    & CIGAR   & $\mathbf{2.8333 \pm 0.1578}$ & $\mathbf{13.1537 \pm 0.5787}$ & $\mathbf{0.1017 \pm 0.0049}$ & $\mathbf{0.7775 \pm 0.0436}$ \\
+    \midrule
+    \textbf{Crotonaldehyde}
+    & XGBoost & $2.1024 \pm 0.2271$          & $7.1291 \pm 1.4675$          & $0.0910 \pm 0.0110$         & $0.3145 \pm 0.0782$ \\
+    & TabPFN  & $\mathbf{2.0177 \pm 0.1679}$ & $\mathbf{6.7122 \pm 1.4070}$ & $\mathbf{0.0859 \pm 0.0100}$ & $\mathbf{0.3553 \pm 0.0453}$ \\
+    & CIGAR   & $2.0726 \pm 0.1970$          & $7.1718 \pm 1.7436$          & $0.0897 \pm 0.0101$         & $0.3136 \pm 0.1088$ \\
+    \midrule
+    \textbf{NH$_3$}
+    & XGBoost & $1.6168 \pm 0.1684$          & $5.0141 \pm 1.7698$          & $0.1494 \pm 0.0150$         & $0.7004 \pm 0.0543$ \\
+    & TabPFN  & $1.7824 \pm 0.1784$          & $5.7216 \pm 1.7804$          & $0.1723 \pm 0.0150$         & $0.6555 \pm 0.0539$ \\
+    & CIGAR   & $\mathbf{1.4288 \pm 0.2025}$ & $\mathbf{4.5105 \pm 2.3570}$ & $\mathbf{0.1294 \pm 0.0084}$ & $\mathbf{0.7371 \pm 0.0840}$ \\
+    \midrule
+    \textbf{BaP}
+    & XGBoost & $1.7227 \pm 0.1337$          & $5.1141 \pm 1.1390$          & $0.1002 \pm 0.0093$         & $0.4797 \pm 0.0862$ \\
+    & TabPFN  & $2.0285 \pm 0.2877$          & $6.8629 \pm 2.0775$          & $0.1223 \pm 0.0231$         & $0.3069 \pm 0.1675$ \\
+    & CIGAR   & $\mathbf{1.6768 \pm 0.2325}$ & $\mathbf{4.9633 \pm 1.3452}$ & $\mathbf{0.0970 \pm 0.0128}$ & $\mathbf{0.4998 \pm 0.0956}$ \\
+    \midrule
+    \textbf{NNK}
+    & XGBoost & $1.3259 \pm 0.1734$          & $6.2001 \pm 2.1517$          & $0.2193 \pm 0.0373$         & $0.6950 \pm 0.0372$ \\
+    & TabPFN  & $1.2082 \pm 0.1876$          & $5.7092 \pm 4.7518$          & $0.1964 \pm 0.0238$         & $0.6113 \pm 0.4428$ \\
+    & CIGAR   & $\mathbf{1.1253 \pm 0.0743}$ & $\mathbf{4.1246 \pm 1.8255}$ & $\mathbf{0.1878 \pm 0.0197}$ & $\mathbf{0.7447 \pm 0.1934}$ \\
+    \midrule
+    \textbf{Tar}
+    & XGBoost & $0.7281 \pm 0.0734$          & $0.8648 \pm 0.2208$          & $0.0460 \pm 0.0045$         & $\mathbf{0.7712 \pm 0.0236}$ \\
+    & TabPFN  & $0.9589 \pm 0.1271$          & $1.5053 \pm 0.3434$          & $0.0596 \pm 0.0075$         & $0.5920 \pm 0.1003$ \\
+    & CIGAR   & $\mathbf{0.6988 \pm 0.0304}$ & $\mathbf{0.8632 \pm 0.0668}$ & $\mathbf{0.0434 \pm 0.0020}$ & $0.7650 \pm 0.0269$ \\
+    \midrule
+    \textbf{Nicotine}
+    & XGBoost & $0.1268 \pm 0.0144$          & $0.0297 \pm 0.0073$          & $0.0755 \pm 0.0126$         & $0.8329 \pm 0.0630$ \\
+    & TabPFN  & $0.2716 \pm 0.0595$          & $0.1178 \pm 0.0524$          & $0.1449 \pm 0.0243$         & $0.3982 \pm 0.1817$ \\
+    & CIGAR   & $\mathbf{0.1127 \pm 0.0084}$ & $\mathbf{0.0249 \pm 0.0078}$ & $\mathbf{0.0669 \pm 0.0046}$ & $\mathbf{0.8603 \pm 0.0547}$ \\
+\end{longtable}
+}

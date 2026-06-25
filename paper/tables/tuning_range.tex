@@ -1,0 +1,25 @@
+\begin{table}[htbp]
+    \centering
+    {\footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \caption{Hyperparameter tuning ranges and distributions for XGBoost.}
+    \label{tab:hyperparameters}
+    \begin{tabular}{>{\raggedright\arraybackslash}p{0.16\textwidth} >{\raggedright\arraybackslash}p{0.31\textwidth} >{\raggedright\arraybackslash}p{0.22\textwidth} >{\raggedright\arraybackslash}p{0.20\textwidth}}
+        \toprule
+        \textbf{Model} & \textbf{Hyperparameter} & \textbf{Range / Choices} & \textbf{Type (Scale)} \\
+        \midrule
+
+        \multirow{8}{*}{XGBoost}
+        & \texttt{n\_estimators} & $[100, 800]$ & Integer (Linear) \\
+        & \texttt{max\_depth} & $[2, 8]$ & Integer (Linear) \\
+        & \texttt{learning\_rate} & $[10^{-2}, 0.3]$ & Float (Log) \\
+        & \texttt{subsample} & $[0.6, 1.0]$ & Float (Linear) \\
+        & \texttt{colsample\_bytree} & $[0.6, 1.0]$ & Float (Linear) \\
+        & \texttt{min\_child\_weight} & $[10^{-2}, 10]$ & Float (Log) \\
+        & \texttt{reg\_alpha} & $[10^{-8}, 10]$ & Float (Log) \\
+        & \texttt{reg\_lambda} & $[10^{-8}, 10]$ & Float (Log) \\
+
+        \bottomrule
+    \end{tabular}
+    }
+\end{table}

@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.ipynb_checkpoints/
+results/*.csv
+results/*.tex
+results/*.png
+results/*.pdf
+!results/.gitkeep
+*.pt
+*.pth
+*.log
+*:Zone.Identifier

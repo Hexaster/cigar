@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+    \centering
+    \caption{Optimal XGBoost hyperparameters for each target, obtained with Optuna.}
+    \label{tab:xgb_params}
+    \scriptsize\setlength{\tabcolsep}{4pt}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{lcccccccc}
+        \toprule
+        \textbf{Target} & \textbf{n\_est} & \textbf{depth} & \textbf{lr} & \textbf{subsample} & \textbf{colsample} & \textbf{min\_child} & \textbf{reg\_alpha} & \textbf{reg\_lambda} \\
+        \midrule
+        CO             & 767 & 4 & 0.0203 & 0.6301 & 0.7565 & 0.7626 & 1.55e-02 & 5.34e-01 \\
+        HCN            & 252 & 3 & 0.0563 & 0.6537 & 0.7125 & 0.0832 & 1.11e-07 & 7.41e-05 \\
+        Phenol         & 722 & 3 & 0.0482 & 0.6445 & 0.8685 & 0.1358 & 1.27e+00 & 8.63e-02 \\
+        Crotonaldehyde & 681 & 3 & 0.0164 & 0.8050 & 0.9358 & 0.0978 & 1.55e-06 & 3.46e-03 \\
+        NH$_3$         & 302 & 5 & 0.0381 & 0.7078 & 0.6287 & 5.0987 & 2.86e-05 & 1.57e-08 \\
+        BaP            & 714 & 6 & 0.0180 & 0.6761 & 0.7107 & 0.0430 & 7.51e-02 & 5.66e-05 \\
+        NNK            & 518 & 7 & 0.0204 & 0.6269 & 0.8188 & 0.6732 & 4.50e-02 & 4.48e-01 \\
+        Tar            & 744 & 3 & 0.0654 & 0.6426 & 0.8782 & 0.7980 & 3.51e-06 & 6.14e-02 \\
+        Nicotine       & 540 & 5 & 0.0453 & 0.8273 & 0.8661 & 6.8502 & 6.16e-05 & 2.75e+00 \\
+        \bottomrule
+    \end{tabular}%
+    }
+\end{table}
