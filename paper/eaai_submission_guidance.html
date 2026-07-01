@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EAAI Submission Adaptation Checklist</title>
+  <style>
+    :root {
+      --paper: #fbfaf7;
+      --ink: #1d1b18;
+      --muted: #68625b;
+      --rule: #d9d3ca;
+      --panel: #ffffff;
+      --critical: #b3261e;
+      --high: #7a4d00;
+      --medium: #246b53;
+      --low: #4e5d6c;
+      --mark: #f2c94c;
+      --soft-red: #f8e8e5;
+      --soft-amber: #fff2d6;
+      --soft-green: #e8f4ef;
+      --soft-gray: #edf0f2;
+      --shadow: 0 18px 50px rgba(29, 27, 24, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: var(--mark);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 34px 22px 56px;
+    }
+
+    header {
+      border-bottom: 2px solid var(--ink);
+      padding: 18px 0 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--critical);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 860px;
+      font-size: clamp(34px, 5vw, 66px);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 790px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .stamp {
+      border: 2px solid var(--ink);
+      padding: 12px 14px;
+      min-width: 174px;
+      text-align: center;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .stamp strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .stamp span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .summary {
+      margin: 28px 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--rule);
+      background: var(--panel);
+    }
+
+    .summary div {
+      padding: 18px;
+      border-right: 1px solid var(--rule);
+      min-height: 114px;
+    }
+
+    .summary div:last-child {
+      border-right: 0;
+    }
+
+    .summary strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .summary span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    nav {
+      position: sticky;
+      top: 18px;
+      border: 1px solid var(--rule);
+      background: var(--panel);
+      padding: 16px;
+    }
+
+    nav h2 {
+      margin: 0 0 12px;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    nav a {
+      display: block;
+      padding: 9px 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      border-top: 1px solid var(--rule);
+    }
+
+    nav a:hover {
+      color: var(--ink);
+    }
+
+    section {
+      margin: 0 0 20px;
+      border: 1px solid var(--rule);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    section header {
+      display: block;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section h2 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    section p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .body {
+      padding: 10px 20px 20px;
+    }
+
+    .priority {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      margin-bottom: 10px;
+      padding: 4px 9px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .p0 { color: var(--critical); background: var(--soft-red); }
+    .p1 { color: var(--high); background: var(--soft-amber); }
+    .p2 { color: var(--medium); background: var(--soft-green); }
+    .p3 { color: var(--low); background: var(--soft-gray); }
+
+    .checklist {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li {
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .checklist li:last-child {
+      border-bottom: 0;
+    }
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      accent-color: var(--medium);
+    }
+
+    .task strong {
+      display: block;
+      font-size: 16px;
+    }
+
+    .task span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .evidence {
+      margin-top: 14px;
+      border-left: 4px solid var(--mark);
+      padding: 10px 12px;
+      background: #fff9e7;
+      color: #4d3d12;
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .mini {
+      border: 1px solid var(--rule);
+      padding: 14px;
+      background: #fffdf9;
+    }
+
+    .mini h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .mini p,
+    .mini ul {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .mini ul {
+      padding-left: 18px;
+    }
+
+    .package {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .package th,
+    .package td {
+      border-bottom: 1px solid var(--rule);
+      padding: 10px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .package th {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .callout {
+      margin: 18px 0 0;
+      padding: 16px;
+      border: 2px solid var(--ink);
+      background: var(--panel);
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px) {
+      header,
+      main,
+      .summary,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stamp {
+        text-align: left;
+      }
+
+      nav {
+        position: static;
+      }
+
+      .summary div {
+        border-right: 0;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .summary div:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      nav {
+        display: none;
+      }
+
+      main {
+        display: block;
+      }
+
+      section,
+      .summary,
+      .stamp {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <p class="eyebrow">Engineering Applications of Artificial Intelligence</p>
+        <h1>Submission Adaptation Checklist</h1>
+        <p class="subtitle">A prioritized working list for converting the iScience-oriented CIGAR manuscript into an EAAI-ready submission package.</p>
+      </div>
+      <div class="stamp" aria-label="Current status">
+        <strong>Draft</strong>
+        <span>Internal guide</span>
+      </div>
+    </header>
+
+    <div class="summary" aria-label="Submission risk summary">
+      <div>
+        <strong>P0</strong>
+        <span>Desk-rejection blockers: abstract, acronyms, single-column format, page/file limits, journal-fit claims.</span>
+      </div>
+      <div>
+        <strong>250</strong>
+        <span>Maximum abstract word count. Current manuscript abstract is about 277 words.</span>
+      </div>
+      <div>
+        <strong>2 files</strong>
+        <span>Submit a title page and anonymized manuscript separately for double-anonymized review.</span>
+      </div>
+      <div>
+        <strong>Data</strong>
+        <span>EAAI expects data deposit, citation, linking, or a clear reason why sharing is not possible.</span>
+      </div>
+    </div>
+
+    <main>
+      <nav aria-label="Checklist navigation">
+        <h2>Sections</h2>
+        <a href="#p0">P0 Desk-Rejection Blockers</a>
+        <a href="#p1">P1 Journal Repositioning</a>
+        <a href="#p2">P2 Manuscript Structure</a>
+        <a href="#p3">P3 Submission Files</a>
+        <a href="#p4">P4 Declarations</a>
+        <a href="#p5">P5 Formatting And References</a>
+        <a href="#p6">P6 Cover Letter</a>
+        <a href="#package">Submission Package</a>
+      </nav>
+
+      <div>
+        <section id="p0">
+          <header>
+            <span class="priority p0">P0 Critical</span>
+            <h2>Desk-Rejection Blockers</h2>
+            <p>Fix these before deeper rewriting. EAAI states that manuscripts missing these conditions can be desk-rejected before peer review.</p>
+          </header>
+          <div class="body">
+            <ul class="checklist">
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Rewrite the abstract to 250 words or fewer.</strong>
+                  <span>State purpose, principal results, and major conclusions in a concise factual style.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Make the abstract explicitly name the AI contribution and the engineering application.</strong>
+                  <span>AI contribution: physics-informed hybrid model and TabPFN-based formulation factor. Engineering application: cigarette combustion, aerosol filtration, and mainstream-smoke constituent prediction.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Remove or define acronyms in the title and abstract.</strong>
+                  <span>The current title begins with CIGAR before definition; EAAI forbids undefined acronyms in title and abstract.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Confirm single-column formatting, page count, and file size.</strong>
+                  <span>Keep the manuscript in single-column format, final PDF at or below 50 pages, and submission package under 100 MB.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Prepare a defensible public-data or restricted-data position.</strong>
+                  <span>If raw tobacco data cannot be public, explain confidentiality constraints and release processed features, code, split files, and result summaries where possible.</span>
+                </div>
+              </li>
+            </ul>
+            <div class="evidence">Current evidence: <a href="main_NNK.tex">main_NNK.tex</a> uses a 277-word abstract, unnumbered iScience-style sections, numbered citations, and an "available upon request" data/code statement.</div>
+          </div>
+        </section>
+
+        <section id="p1">
+          <header>
+            <span class="priority p1">P1 High</span>
+            <h2>Journal Repositioning</h2>
+            <p>Shift the paper from a specialized life-science framing to a practical engineering-AI contribution.</p>
+          </header>
+          <div class="body">
+            <ul class="checklist">
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Reduce the broad public-health opening.</strong>
+                  <span>Keep enough motivation, but lead earlier with the engineering problem: interpretable prediction for a combustion and filtration system.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Strengthen engineering-AI related work.</strong>
+                  <span>Add or foreground hybrid physics-informed ML, interpretable ML, surrogate modeling, tabular foundation models, and AI for engineered process systems.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Tighten the novelty claim.</strong>
+                  <span>Emphasize native puff-resolved and segment-resolved physical trajectories, not only scalar yield accuracy.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Moderate harm-reduction language.</strong>
+                  <span>Prefer "regulatory assessment," "emissions prediction," and "design-to-emission simulation" unless health outcomes are directly validated.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="p2">
+          <header>
+            <span class="priority p2">P2 Medium</span>
+            <h2>Manuscript Structure</h2>
+            <p>Convert the article from iScience conventions to EAAI's numbered manuscript format.</p>
+          </header>
+          <div class="body">
+            <div class="grid">
+              <div class="mini">
+                <h3>Recommended section order</h3>
+                <ul>
+                  <li>1. Introduction</li>
+                  <li>2. Materials and methods</li>
+                  <li>3. CIGAR model</li>
+                  <li>4. Experimental setup</li>
+                  <li>5. Results</li>
+                  <li>6. Discussion</li>
+                  <li>7. Conclusions</li>
+                </ul>
+              </div>
+              <div class="mini">
+                <h3>Current source to convert</h3>
+                <p>The manuscript currently uses Abstract, Introduction, Results, Discussion, Resource availability, Acknowledgments, Declaration of interests, and STAR Methods.</p>
+              </div>
+            </div>
+            <ul class="checklist">
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Replace all unnumbered main headings with numbered sections.</strong>
+                  <span>Do not number the abstract or back-matter declarations.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Move STAR Methods content into Methods, Model, and Experimental Setup.</strong>
+                  <span>Keep enough detail for independent reproduction.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Add a standalone Conclusions section.</strong>
+                  <span>Separate final conclusions from limitations and future work.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Move long tables or auxiliary details to supplementary material if page count is tight.</strong>
+                  <span>Prioritize model comparison, mechanism example, and key dataset details in the main article.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="p3">
+          <header>
+            <span class="priority p2">P3 Medium</span>
+            <h2>Submission Files</h2>
+            <p>EAAI uses double-anonymized review and asks for several separate editable files.</p>
+          </header>
+          <div class="body">
+            <ul class="checklist">
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Create a separate title page.</strong>
+                  <span>Include article title, author names, affiliations, full postal address for the corresponding author, email, acknowledgments, funding, and declarations.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Create a separate anonymized manuscript.</strong>
+                  <span>Remove author names, affiliations, acknowledgments, institutional identifiers where possible, and any self-identifying supplementary material.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Add 1 to 6 keywords.</strong>
+                  <span>Candidate keywords: physics-informed learning; interpretable AI; tabular regression; combustion modeling; smoke emissions; hybrid modeling.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Create a separate highlights file.</strong>
+                  <span>Use 3 to 5 bullets, each no more than 85 characters including spaces.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Prepare a graphical abstract if the team wants one.</strong>
+                  <span>Adapt the existing flowchart into a concise readable image. Preferred size is at least 531 x 1328 pixels or proportional.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="p4">
+          <header>
+            <span class="priority p1">P4 High</span>
+            <h2>Declarations</h2>
+            <p>Declarations need special care because the study involves tobacco institutions and tobacco-industry funding.</p>
+          </header>
+          <div class="body">
+            <ul class="checklist">
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Reassess the competing-interest statement.</strong>
+                  <span>Do not rely on a generic "no competing interests" statement if employment, affiliations, funding, or sponsor relationships require disclosure.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Add a complete funding statement.</strong>
+                  <span>State China National Tobacco Corporation grant number and the sponsor's role in design, data collection, analysis, writing, and submission.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Add CRediT author contributions.</strong>
+                  <span>Use roles such as Conceptualization, Data curation, Methodology, Software, Validation, Visualization, Supervision, and Writing.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Add a generative AI declaration if AI tools were used.</strong>
+                  <span>Use Elsevier's format: tool name, purpose, author review/editing, and author responsibility.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Strengthen the data and code availability statement.</strong>
+                  <span>Prefer a repository link or DOI. If not possible, explain the restriction clearly and identify what can be shared.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="p5">
+          <header>
+            <span class="priority p3">P5 Supporting</span>
+            <h2>Formatting And References</h2>
+            <p>These items are less strategic than the fit and disclosure issues, but they should be clean before submission.</p>
+          </header>
+          <div class="body">
+            <ul class="checklist">
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Consider switching from numbered citations to author-year citations.</strong>
+                  <span>The current source uses numbered natbib with unsrtnat; EAAI examples use author-year style.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Verify complete reference metadata and DOI availability.</strong>
+                  <span>Check author names, titles, journal names, years, pagination, DOIs, and access dates for web references.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Number displayed equations if cross-referenced.</strong>
+                  <span>Use consecutive equation numbering in the main text and appendix-specific numbering if appendices are added.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Submit figures as separate logical files.</strong>
+                  <span>Use names such as Figure_1.pdf and Figure_2.pdf. Ensure captions explain all symbols and abbreviations.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Remove Windows metadata sidecar files before packaging.</strong>
+                  <span>Do not submit files ending in Zone.Identifier.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="p6">
+          <header>
+            <span class="priority p3">P6 Supporting</span>
+            <h2>Cover Letter</h2>
+            <p>The cover letter should explain why the manuscript now belongs in an engineering-AI journal.</p>
+          </header>
+          <div class="body">
+            <ul class="checklist">
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Lead with the real-world engineering application.</strong>
+                  <span>Frame the problem as process-level AI prediction for engineered combustion and aerosol filtration.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Name the AI novelty in one sentence.</strong>
+                  <span>Example: CIGAR combines a differentiable mechanistic release model with a tabular foundation model to produce interpretable per-puff trajectories.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>State originality and submission status.</strong>
+                  <span>Confirm the work is not under consideration elsewhere and all authors approved the submission.</span>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox">
+                <div class="task">
+                  <strong>Do not mention the iScience rejection.</strong>
+                  <span>Use that history only internally to guide repositioning.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="package">
+          <header>
+            <span class="priority p2">Package</span>
+            <h2>Submission Package Map</h2>
+            <p>Use this table to track the final files before uploading to Editorial Manager.</p>
+          </header>
+          <div class="body">
+            <table class="package">
+              <thead>
+                <tr>
+                  <th>File</th>
+                  <th>Status</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Anonymized manuscript</td>
+                  <td>Required</td>
+                  <td>Main body, references, tables, and figures without identifying information.</td>
+                </tr>
+                <tr>
+                  <td>Title page</td>
+                  <td>Required</td>
+                  <td>Authors, affiliations, corresponding author details, acknowledgments, funding, and declarations.</td>
+                </tr>
+                <tr>
+                  <td>Highlights</td>
+                  <td>Recommended</td>
+                  <td>3 to 5 bullets, no more than 85 characters each.</td>
+                </tr>
+                <tr>
+                  <td>Graphical abstract</td>
+                  <td>Optional</td>
+                  <td>Useful if adapted from the existing flowchart and kept legible.</td>
+                </tr>
+                <tr>
+                  <td>Figures</td>
+                  <td>Required if used</td>
+                  <td>Separate files with clear names and sufficient resolution.</td>
+                </tr>
+                <tr>
+                  <td>Declaration of interests</td>
+                  <td>Required</td>
+                  <td>Complete Elsevier declaration tool output if separate from title page.</td>
+                </tr>
+                <tr>
+                  <td>Data/code repository or restriction statement</td>
+                  <td>Required</td>
+                  <td>Deposit and cite data/code where possible; otherwise explain confidentiality constraints.</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="callout">Recommended first move: revise the title, abstract, and Introduction before spending time on minor formatting.</div>
+          </div>
+        </section>
+
+        <footer>
+          Source materials: <a href="Guide%20for%20authors.pdf">Guide for authors.pdf</a>, <a href="main_NNK.tex">main_NNK.tex</a>, and the current CIGAR paper package in this directory.
+        </footer>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
